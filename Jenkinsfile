@@ -1,9 +1,10 @@
+@@Library('whanos-lib') _
 pipeline {
     agent any 
     stages {
         stage('Hello') { 
             steps {
-                echo 'Hello word'
+                helloWord()
             }
         }
         stage('Hello2') { 
