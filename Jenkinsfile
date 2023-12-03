@@ -1,4 +1,4 @@
-@@Library('whanos-lib') _
+@Library('whanos-lib') _
 pipeline {
     agent any 
     stages {
