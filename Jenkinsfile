@@ -44,20 +44,17 @@ def fileExists(filePath) {
 }
 
 def fileExistsOrNot(String path) {
-    def filePath = path
+    def filePathsToCheck = [path.replace('\\', '/'), path] // Vérifie d'abord avec le chemin modifié puis avec le chemin d'origine
     def fileFound = false
-    // Vérifie si le fichier existe
-    if (fileExists(filePath)) {
-        fileFound = true
-    } else {
-        // Vérifie en remplaçant les backslashes par des slashes (pour gérer les chemins Windows)
-        filePath = filePath.replace('\\', '/')
+    for (String filePath : filePathsToCheck) {
         if (fileExists(filePath)) {
             fileFound = true
+            break // Sort de la boucle si le fichier est trouvé
         }
     }
     return fileFound
 }
+
 
 
 
