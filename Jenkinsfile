@@ -7,7 +7,8 @@ pipeline {
                 expression { fileExists('Makefile') }
             }
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
+                sh "echo hello from shared lib"
+                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
             }
         }
         
@@ -16,8 +17,9 @@ pipeline {
                 expression { fileExists('pom.xml') }
             }
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-java mvn package'
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-java java -jar target/app.jar'
+                sh "echo hello from shared lib"
+                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-java mvn package'
+                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-java java -jar target/app.jar'
             }
         }
         
@@ -26,7 +28,8 @@ pipeline {
                 expression { fileExists('package.json') }
             }
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-javascript node .'
+                sh "echo hello from shared lib"
+                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-javascript node .'
             }
         }
         
@@ -35,7 +38,8 @@ pipeline {
                 expression { fileExists('requirements.txt') }
             }
             steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-python python -m app'
+                sh "echo hello from shared lib"
+                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-python python -m app'
             }
         }
         
@@ -44,7 +48,8 @@ pipeline {
                 expression { fileExists('app/main.bf') }
             }
             steps {
-                sh 'docker run --rm -v $(pwd)/app:/app -w /app whanos-befunge befunge-interpreter main.bf'
+                sh "echo hello from shared lib"
+                // sh 'docker run --rm -v $(pwd)/app:/app -w /app whanos-befunge befunge-interpreter main.bf'
             }
         }
     }
