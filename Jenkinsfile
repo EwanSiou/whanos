@@ -11,7 +11,6 @@ pipeline {
                 sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
                 sh './compiled-app'
             }
-            
         }
 
         stage('Build and Run Java') {
