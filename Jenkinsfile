@@ -10,7 +10,6 @@ pipeline {
                 sh "echo hello on est en c"
                 sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
                 sh './compiled-app'
-                
             }
         }
         
