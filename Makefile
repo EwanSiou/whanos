@@ -1,16 +1,16 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c11
-SRC = main.c functions.c
-OBJ = $(SRC:.c=.o)
-EXEC = mon_programme
+NAME = compiled-app
 
-all: $(EXEC)
+SRC = app/hello.c
 
-$(EXEC): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
+all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME):
+	gcc -o $(NAME) $(SRC)
 
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -f *.o
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
