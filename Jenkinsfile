@@ -44,8 +44,21 @@ def fileExists(filePath) {
 }
 
 def fileExistsOrNot(String path) {
-    return fileExists(path) || fileExists(path.replace('\\', '/'))
+    def filePath = path
+    def fileFound = false
+    // Vérifie si le fichier existe
+    if (fileExists(filePath)) {
+        fileFound = true
+    } else {
+        // Vérifie en remplaçant les backslashes par des slashes (pour gérer les chemins Windows)
+        filePath = filePath.replace('\\', '/')
+        if (fileExists(filePath)) {
+            fileFound = true
+        }
+    }
+    return fileFound
 }
+
 
 
 
