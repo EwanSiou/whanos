@@ -7,8 +7,8 @@ pipeline {
                 expression { fileExists('Makefile') }
             }
             steps {
-                sh "echo hello from shared lib"
-                // sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
+                sh "echo hello on est en c"
+                sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
             }
         }
         
