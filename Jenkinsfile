@@ -12,8 +12,7 @@ pipeline {
                 sh './compiled-app'
             }
         }
-        
-        
+
         stage('Build and Run Java') {
             when {
                 expression { fileExists('pom.xml') }
