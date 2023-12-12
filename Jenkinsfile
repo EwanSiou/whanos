@@ -44,8 +44,6 @@ pipeline {
                 expression { fileExists('app/main.bf') }
             }
             steps {
-                // Add your specific Befunge build and execution commands here
-                // For example:
                 sh 'docker run --rm -v $(pwd)/app:/app -w /app whanos-befunge befunge-interpreter main.bf'
             }
         }
