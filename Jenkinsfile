@@ -8,8 +8,7 @@ pipeline {
             }
             steps {
                 sh "echo hello on est en c"
-                sh "hostname"
-                sh 'docker run --rm -v $(pwd):/app -w /app whanos-c make'
+                sh 'docker run --rm -v $(pwd):/app -w /app whanos-c:latest make'
                 sh './compiled-app'
             }
         }
