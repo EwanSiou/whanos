@@ -1,13 +1,24 @@
-# Base image
+# Use base image with GCC 13.2
 FROM gcc:13.2 as builder
 
-# Copy all files to root directory
-COPY . /
+# Set the working directory
+WORKDIR /app
 
-# Compile the C application using Makefile
+# Copy the entire current directory into the container
+COPY . .
+
+# Compile the C application using make
 RUN make
 
-# Final image
+# The resulting compiled binary should be named 'compiled-app'
+# Ensure the binary name matches the expected compiled-app file
+# If not, rename the output binary accordingly
+
+# Final image with only the compiled binary
 FROM scratch
-COPY --from=builder /compiled-app /compiled-app
-CMD ["./compiled-app"]
+
+# Copy the compiled binary from the builder stage
+COPY --from=builder /app/compiled-app /compiled-app
+
+# Set the default command to execute the compiled binary
+CMD ["/compiled-app"]
