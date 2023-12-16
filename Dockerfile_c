@@ -1,24 +1,14 @@
-# Use base image with GCC 13.2
-FROM gcc:13.2 as builder
+# Utiliser l'image de base avec GCC 13.2
+FROM gcc:13.2
 
-# Set the working directory
+# Définir le répertoire de travail dans l'image Docker
 WORKDIR /app
 
-# Copy the entire current directory into the container
-COPY . .
+# Copier les fichiers de votre application dans le conteneur
+COPY . /app
 
-# Compile the C application using make
+# Compilation de l'application avec make
 RUN make
 
-# The resulting compiled binary should be named 'compiled-app'
-# Ensure the binary name matches the expected compiled-app file
-# If not, rename the output binary accordingly
-
-# Final image with only the compiled binary
-FROM scratch
-
-# Copy the compiled binary from the builder stage
-COPY --from=builder /app/compiled-app /compiled-app
-
-# Set the default command to execute the compiled binary
-CMD ["/compiled-app"]
+# Commande par défaut pour exécuter l'application
+CMD ["./compiled-app"]
