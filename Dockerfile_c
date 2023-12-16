@@ -1,0 +1,16 @@
+# Base image
+FROM gcc:13.2 as builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy the entire source code
+COPY . .
+
+# Compile the C application using Makefile
+RUN make
+
+# Final image
+FROM scratch
+COPY --from=builder /app/compiled-app /app/compiled-app
+CMD ["./app/compiled-app"]
