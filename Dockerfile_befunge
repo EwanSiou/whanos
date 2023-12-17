@@ -1,0 +1,7 @@
+FROM esolang/befunge93
+
+WORKDIR /app
+
+COPY ./app/main.bf .
+
+CMD ["befunge93", "/app/main.bf"]
