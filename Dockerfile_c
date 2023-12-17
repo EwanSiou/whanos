@@ -1,14 +1,15 @@
-# Utiliser l'image de base avec GCC 13.2
-FROM gcc:13.2
+FROM gcc:13.2 as build
 
-# Définir le répertoire de travail dans l'image Docker
 WORKDIR /app
 
-# Copier les fichiers de votre application dans le conteneur
 COPY . /app
 
-# Compilation de l'application avec make
 RUN make
 
-# Commande par défaut pour exécuter l'application
+FROM ubuntu:latest
+
+WORKDIR /app
+
+COPY --from=build /app/compiled-app /app/
+
 CMD ["./compiled-app"]
