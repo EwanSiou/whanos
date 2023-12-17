@@ -10,7 +10,6 @@ FROM ubuntu:latest
 
 WORKDIR /app
 
-
 COPY --from=build /app/compiled-app /app/
 
 CMD ["./compiled-app"]
